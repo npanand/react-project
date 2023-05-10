@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import FormikControl from './component/formControls/FormikControl';
 const CustomFormValidation =()=>{
 
-    const checkboxValidation=[
+    const checkboxValidation=[  
 {key:"honda",value:"honda"},{key:"suzuki",value:"suzuki"},{key:"bmw",value:"bmw"}
 ];
   const radioValidation=[{key:"male",value:"male"},
@@ -20,6 +20,7 @@ const CustomFormValidation =()=>{
   }
   
 
+  
   const emailValidation=Yup.object().shape({
 
     email: Yup.string().email('invalid email').required('email important'),
@@ -44,7 +45,8 @@ const CustomFormValidation =()=>{
     validationSchema={emailValidation}
     onSubmit={(values,actions) => {
         actions.resetForm();
-        console.log(values);
+        console.log(JSON.stringify(values,null,2));
+
     }}
 >
      {({
