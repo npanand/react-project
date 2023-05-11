@@ -5,6 +5,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Hooks from './component/hooks';
 import Formcheckup from "./component/formCheckUp";
 import CustomFormValidation from './customformvalidation';
+import ReturnMap from './component/ReturnMap';
 
 const App = ()=>{
   return(
@@ -15,6 +16,7 @@ const App = ()=>{
             <Route path='/' element={<Navbar/>}/>
             <Route path="/hooks" element={<Hooks/>} />
             <Route path="/formcheckup" element={<Formcheckup/>} />
+            <Route path="/returnMap" element={<ReturnMap/>}/>
         </Routes>
 </BrowserRouter> 
 </>

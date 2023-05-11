@@ -10,6 +10,7 @@ function navbar() {
             <li><Link to="/hooks">hooks</Link></li>
             <li><Link to="/formcheckup">formcheckup</Link></li>
             <li> <Link  to="../customformvalidation">customvalidation</Link></li>
+            <li ><Link to="/Returnmap">return map</Link></li>
         </ol>
        </nav>
     </div>
