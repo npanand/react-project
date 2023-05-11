@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ErrorMessage, Field, FieldArray, Form, Formik, FormikHelpers, getIn, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from './component/formControls/FormikControl';
+import ReturnMap from './component/ReturnMap';
 const CustomFormValidation =()=>{
+  
+  const[value,setValue]=useState("no");
+  const[data,setdata]=useState(null);
+  var userdata:any;
 
     const checkboxValidation=[  
 {key:"honda",value:"honda"},{key:"suzuki",value:"suzuki"},{key:"bmw",value:"bmw"}
@@ -36,6 +41,9 @@ const CustomFormValidation =()=>{
           
 
   });
+  const handelesubmit=(value:any)=>{
+          setdata(value);
+  }
 
   
   return (
@@ -45,7 +53,12 @@ const CustomFormValidation =()=>{
     validationSchema={emailValidation}
     onSubmit={(values,actions) => {
         actions.resetForm();
+
+        
+        
+
         console.log(JSON.stringify(values,null,2));
+
 
     }}
 >
@@ -62,7 +75,7 @@ const CustomFormValidation =()=>{
                         <Form   onSubmit={handleSubmit} >
                              <>
                              <div>
-                             <FormikControl control="input" type="email" label="please fill the email" name="email" placeholder="enter the email" />
+                             <FormikControl control="input" class="" type="email" label="please fill the email" name="email" placeholder="enter the email" />
                              <br/>
                              <FormikControl control="input" type="password" label="enter a password" name="password" placeholder="enter the password" />
                              <br/>
@@ -76,10 +89,11 @@ const CustomFormValidation =()=>{
                              <br/>
                              <FormikControl control="select"  label="choose the phone" name="mobile" placeholder="choose the phone model" options={selectValidation} />
                             
-                               <button  type="submit">submit</button>
+                               <button  type="submit" onClick={()=> setValue("yes")}>submit</button>
+                              {data&&<ReturnMap value={data}/>} 
                                
-                              
                              </div>
+                             
 
                             
                               
@@ -88,6 +102,11 @@ const CustomFormValidation =()=>{
                         </Form>
                          )}
                          </Formik>
+                         
+                         
+                          
+                        
+                      
     
 
   );
