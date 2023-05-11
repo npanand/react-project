@@ -28,6 +28,7 @@ const FormCheckUp=()=>{
             <h1> signup</h1>
             <Formik initialValues={{ name: '', email: '', password: '', picked: '', rangenumber: '', checkboxs: [] }} validationSchema={checking}
                 onSubmit={(values, actions) => {
+                    console.log(JSON.stringify(values,null,2));
                     setData({
                         name: values.name, email: values.email, password: values.password, picked: values.picked, rangenumber:  values.rangenumber, checkboxs: values.checkboxs ,show:true,
                        });

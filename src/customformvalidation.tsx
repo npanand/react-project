@@ -9,7 +9,7 @@ const CustomFormValidation =()=>{
   const[data,setdata]=useState(null);
   var userdata:any;
 
-    const checkboxValidation=[
+    const checkboxValidation=[  
 {key:"honda",value:"honda"},{key:"suzuki",value:"suzuki"},{key:"bmw",value:"bmw"}
 ];
   const radioValidation=[{key:"male",value:"male"},
@@ -25,6 +25,7 @@ const CustomFormValidation =()=>{
   }
   
 
+  
   const emailValidation=Yup.object().shape({
 
     email: Yup.string().email('invalid email').required('email important'),
@@ -52,8 +53,12 @@ const CustomFormValidation =()=>{
     validationSchema={emailValidation}
     onSubmit={(values,actions) => {
         actions.resetForm();
+
         
         
+
+        console.log(JSON.stringify(values,null,2));
+
 
     }}
 >
