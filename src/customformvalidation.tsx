@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { ErrorMessage, Field, FieldArray, Form, Formik, FormikHelpers, getIn, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from './component/formControls/FormikControl';
-import ReturnMap from './component/ReturnMap';
+
+
 const CustomFormValidation =()=>{
   
   const[value,setValue]=useState("no");
@@ -90,7 +91,7 @@ const CustomFormValidation =()=>{
                              <FormikControl control="select"  label="choose the phone" name="mobile" placeholder="choose the phone model" options={selectValidation} />
                             
                                <button  type="submit" onClick={()=> setValue("yes")}>submit</button>
-                              {data&&<ReturnMap value={data}/>} 
+                             
                                
                              </div>
                              

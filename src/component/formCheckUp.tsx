@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as up from 'yup';
-
+import {API_URL} from './api/API'
+import axios from 'axios'
 
 const FormCheckUp=()=>{
     const[data,setData]=useState({});
+    
     
     const checking = up.object().shape({
         name: up.string().min(3, 'low letter').max(5, 'overword').required('name important'),
@@ -27,11 +29,16 @@ const FormCheckUp=()=>{
         <div>
             <h1> signup</h1>
             <Formik initialValues={{ name: '', email: '', password: '', picked: '', rangenumber: '', checkboxs: [] }} validationSchema={checking}
-                onSubmit={(values, actions) => {
-                    console.log(JSON.stringify(values,null,2));
+                onSubmit={async(values, actions) => {
+                    var a =JSON.stringify(values,null,2)
+                    var b = JSON.parse(a);
+                    await axios.post('https://645cc637250a246ae30da723.mockapi.io/user',b);
                     setData({
                         name: values.name, email: values.email, password: values.password, picked: values.picked, rangenumber:  values.rangenumber, checkboxs: values.checkboxs ,show:true,
                        });
+                       actions.resetForm();
+
+
 
                 }} >
                 {
@@ -102,7 +109,7 @@ const FormCheckUp=()=>{
                                 </label>
                             </div>
                             <ErrorMessage name='checkboxs' component="h1" />
-                            <button type="submit" >submit</button>
+                            <button type="submit"  >submit</button>
 
                         </Form>
                 }
